@@ -1,0 +1,19 @@
+[
+    {
+        "day": 1,
+        "amount": 50,
+        "paid_by": "Tanu",
+        "friends": ["Kasun", "Tanu"]
+    },
+    {
+        "day": 2,
+        "amount": 100,
+        "paid_by": "Kasun",
+        "friends": ["Kasun", "Tanu", "Liam"]
+    },
+    {
+        "day": 3,
+        "amount": 100,
+        "paid_by": "Liam",
+        "friends": ["Liam", "Tanu", "Liam"]
+
