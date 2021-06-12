@@ -7,6 +7,7 @@ use App\Models\Charge;
 use App\Models\Person;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Emberfuse\Scorch\Support\Traits\Fillable;
 
 class CalculateBill
@@ -36,6 +37,8 @@ class CalculateBill
      */
     public function calculate(array $data)
     {
+        $this->validate($data);
+
         return DB::transaction(function () use ($data) {
             $bill = Bill::create(['code' => uniqid()]);
 
@@ -70,6 +73,25 @@ class CalculateBill
 
             return $bill;
         });
+    }
+
+    /**
+     * Validate the add member operation.
+     *
+     * @param array $data
+     *
+     * @return void
+     */
+    protected function validate(array $data): void
+    {
+        Validator::make([], [])->after(function ($validator) use ($data) {
+            foreach ($data as $detail) {
+                $validator->errors()->addIf(
+                    ! isset($detail['friends']),
+                    'bill', __('You have not mentioned any friends.')
+                );
+            }
+        })->validateWithBag('calculateBill');
     }
 
     /**
