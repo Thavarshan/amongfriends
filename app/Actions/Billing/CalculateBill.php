@@ -46,7 +46,7 @@ class CalculateBill
                         : $this->registerDebt($person, $charge, $hasFriend);
 
                     $person->createSpending([
-                        'amount' => $this->amountPerPerson,
+                        'amount' => (int) $this->amountPerPerson,
                         'charge_id' => $charge->id,
                     ]);
 
@@ -85,7 +85,7 @@ class CalculateBill
     protected function registerPayment(Person $person, Charge $charge): void
     {
         $person->createPayment([
-            'amount' => $charge->amount,
+            'amount' => (int) $charge->amount,
             'charge_id' => $charge->id,
         ]);
     }
@@ -101,7 +101,9 @@ class CalculateBill
     protected function registerDebt(Person $person, Charge $charge, bool $hasFriends = false): void
     {
         $person->createDebt([
-            'amount' => $hasFriends ? $this->amountForFrinds : $this->amountPerPerson,
+            'amount' => $hasFriends
+                ? (int) $this->amountForFrinds
+                : (int) $this->amountPerPerson,
             'charge_id' => $charge->id,
             'owed_to' => $charge->paid_by,
         ]);
