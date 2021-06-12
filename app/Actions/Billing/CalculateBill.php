@@ -85,13 +85,27 @@ class CalculateBill
     protected function validate(array $data): void
     {
         Validator::make([], [])->after(function ($validator) use ($data) {
-            foreach ($data as $detail) {
+            foreach ($data as $details) {
                 $validator->errors()->addIf(
-                    ! isset($detail['friends']),
-                    'bill', __('You have not mentioned any friends.')
+                    ! $this->hasRequiredAttributes($details),
+                    'bill', __('All required data are not present.')
                 );
             }
         })->validateWithBag('calculateBill');
+    }
+
+    /**
+     * Determine if the array contains required details.
+     *
+     * @param array $details
+     *
+     * @return bool
+     */
+    public function hasRequiredAttributes(array $details): bool
+    {
+        $required = ['day', 'paid_by', 'amount', 'friends'];
+
+        return count(array_intersect_key(array_flip($required), $details)) === count($required);
     }
 
     /**
