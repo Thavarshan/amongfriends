@@ -39,7 +39,7 @@ createApp({
 
 InertiaProgress.init({
     delay: 250,
-    color: '#F97316',
+    color: '#E11D48',
     includeCSS: true,
     showSpinner: false,
 });
