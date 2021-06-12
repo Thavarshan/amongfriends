@@ -72,7 +72,7 @@ php artisan serve
 
 ## Usage
 
-Once you are at the welcome screen you should be able to see a text box with the label `Billing records in JSON format` and a button that says *Upload billing records*. You can either copy and paste the appropriate format of billing data on the text-box or upload a `.txt` or `.json` file.
+Once you are at the welcome screen you should be able to see a text box with the label **Billing records in JSON format** and a button that says **Upload billing records**. You can either copy and paste the appropriate format of billing data on the text-box or upload a `.txt` or `.json` file.
 
 > Please use valid `JSON` data format otherwise the application will reject your request.
 
