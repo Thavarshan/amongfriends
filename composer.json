@@ -7,7 +7,7 @@
         "bill",
         "split"
     ],
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
         "php": "^7.4|^8.0",
         "emberfuse/blaze": "^1.0",

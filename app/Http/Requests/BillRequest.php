@@ -13,7 +13,7 @@ class BillRequest extends Request
      */
     public function authorize(): bool
     {
-        return $this->filled('bill') || $this->filled('billfile');
+        return $this->filled('bill') || $this->has('billfile');
     }
 
     /**
