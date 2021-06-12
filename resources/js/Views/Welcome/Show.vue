@@ -64,7 +64,7 @@
 
                         <div class="mt-6">
                             <p>
-                                Still confused? check out our <app-link href="#">usage guide</app-link>.
+                                Still confused? check out our <app-link :href="route('guide')">usage guide</app-link>.
                             </p>
                         </div>
                     </form>

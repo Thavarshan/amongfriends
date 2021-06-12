@@ -18,6 +18,7 @@
         "inertiajs/inertia-laravel": "^0.4.2",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "league/commonmark": "^1.6",
         "tightenco/ziggy": "^1.2"
     },
     "require-dev": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Billing;
+namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Actions\Billing\CalculateBill;

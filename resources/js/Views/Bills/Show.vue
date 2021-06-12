@@ -2,7 +2,7 @@
     <guest-layout>
         <div>
             <div>
-                <app-link :href="route('welcome')" class="uniderline-none">
+                <app-link :href="route('welcome')">
                     <span class="mr-1">&larr;</span> Back to bill calculator
                 </app-link>
             </div>
