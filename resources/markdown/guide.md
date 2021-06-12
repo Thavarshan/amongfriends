@@ -1,4 +1,4 @@
-# Guide
+# How To Use This App?
 
 Once you are at the welcome screen you should be able to see a text box with the label **Billing records in JSON format** and a button that says **Upload billing records**. You can either copy and paste the appropriate format of billing data on the text-box or upload a `.txt` or `.json` file.
 
