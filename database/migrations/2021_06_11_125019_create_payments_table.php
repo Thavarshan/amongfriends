@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreatePaymentsTable extends Migration
 {
@@ -20,7 +20,8 @@ class CreatePaymentsTable extends Migration
                 ->constrained('charges', 'id')
                 ->onDelete('cascade');
             $table->foreignId('person_id')
-                ->constrained('people', 'id');
+                ->constrained('people', 'id')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

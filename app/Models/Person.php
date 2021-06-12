@@ -25,6 +25,36 @@ class Person extends Model
      */
     protected $with = ['payments', 'spendings', 'debts'];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'spent',
+        'in_debt',
+    ];
+
+    /**
+     * Get the total amount spent.
+     *
+     * @return int
+     */
+    public function getSpentAttribute(): int
+    {
+        return $this->spendings->pluck('amount')->sum();
+    }
+
+    /**
+     * Get the total amount spent.
+     *
+     * @return int
+     */
+    public function getInDebtAttribute(): int
+    {
+        return $this->debts->pluck('amount')->sum();
+    }
+
     public function charges(): BelongsToMany
     {
         return $this->belongsToMany(Charge::class);

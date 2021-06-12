@@ -47,7 +47,7 @@
                                 Upload billing records file
                             </app-button>
 
-                            <app-input-error :message="form.errors.photo" class="mt-2"></app-input-error>
+                            <app-input-error :message="form.errors.billfile" class="mt-4"></app-input-error>
                         </div>
 
                         <section-border span="5"></section-border>
@@ -64,7 +64,7 @@
 
                         <div class="mt-6">
                             <p>
-                                Still confused? check out our <app-link :href="route('register')">usage guide</app-link>.
+                                Still confused? check out our <app-link href="#">usage guide</app-link>.
                             </p>
                         </div>
                     </form>
@@ -100,6 +100,13 @@ export default {
         SectionBorder,
         ActionMessage,
         Advertisement,
+    },
+
+    props: {
+        details: {
+            type: Object,
+            required: false
+        }
     },
 
     data() {

@@ -20,7 +20,8 @@ class CreateSpendingsTable extends Migration
                 ->constrained('charges', 'id')
                 ->onDelete('cascade');
             $table->foreignId('person_id')
-                ->constrained('people', 'id');
+                ->constrained('people', 'id')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

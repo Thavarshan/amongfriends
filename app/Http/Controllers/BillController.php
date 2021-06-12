@@ -7,20 +7,22 @@ use Inertia\Inertia;
 use App\Http\Requests\BillRequest;
 use App\Http\Responses\BillResponse;
 use App\Actions\Billing\CalculateBill;
+use App\Actions\Billing\ParseBillDetails;
 
 class BillController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Bill $bill
+     * @param \App\Models\Bill                      $bill
+     * @param \App\Actions\Billing\ParseBillDetails $parser
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Bill $bill)
+    public function show(Bill $bill, ParseBillDetails $parser)
     {
         return Inertia::render('Bills/Show', [
-            'bill' => $bill->load('charges')
+            'details' => $parser->parse($bill),
         ]);
     }
 

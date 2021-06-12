@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class CalculateBill
 {
-    protected $charges = [];
-
     /**
      * Parse the given billing data and calculate payment amounts.
      *
