@@ -61,4 +61,11 @@ class SplitBillTest extends TestCase
 
         $response->assertStatus(201);
     }
+
+    public function testValidDataRequired()
+    {
+        $response = $this->from('/')->post('/bills', []);
+
+        $response->assertStatus(403);
+    }
 }
