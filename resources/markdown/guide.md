@@ -4,7 +4,7 @@ Once you are at the welcome screen you should be able to see a text box with the
 
 > Please use valid `JSON` data format otherwise the application will reject your request.
 
-A sample data format is provided:
+You may use either this [sample data pack](http://amongfriendsapp.herokuapp.com/data/sample.zip) or the below sample data format:
 
 ```json
 [
