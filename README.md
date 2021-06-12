@@ -38,12 +38,6 @@ Generate a new application key
 php artisan key:generate
 ```
 
-Generate a new JWT authentication secret key
-
-```bash
-php artisan jwt:generate
-```
-
 Run the database migrations (**Set the database connection in .env before migrating**)
 
 ```bash
