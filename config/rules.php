@@ -1,6 +1,7 @@
 <?php
 
 use App\Rules\JsonRule;
+use App\Rules\BillFileRule;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
 use Emberfuse\Scorch\Rules\PasswordRule;
@@ -78,6 +79,11 @@ return [
      */
     'bill' => [
         'bill' => ['nullable', 'string', new JsonRule()],
-        'billfile' => ['nullable', 'mimetypes:text/plain,application/json', 'mimes:txt,json'],
+        'billfile' => [
+            'nullable',
+            'mimetypes:text/plain,application/json',
+            'mimes:txt,json',
+            new BillFileRule(),
+        ],
     ],
 ];

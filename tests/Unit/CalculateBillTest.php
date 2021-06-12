@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\Bill;
@@ -13,11 +13,20 @@ class CalculateBillTest extends TestCase
 
     public function testCalculateChargeAmounts()
     {
-        $this->withoutExceptionHandling();
-
         $calculator = new CalculateBill();
 
         $file = $this->app->resourcePath('data/sample.txt');
+
+        $contents = json_decode(file_get_contents($file), true);
+
+        $this->assertInstanceOf(Bill::class, $calculator->calculate($contents));
+    }
+
+    public function testCalculateChargeAmountsForFriendsOfFriend()
+    {
+        $calculator = new CalculateBill();
+
+        $file = $this->app->resourcePath('data/sample-nested.json');
 
         $contents = json_decode(file_get_contents($file), true);
 

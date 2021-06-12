@@ -14,7 +14,6 @@ class CreateChargePersonTable extends Migration
     public function up()
     {
         Schema::create('charge_person', function (Blueprint $table) {
-            $table->primary(['person_id', 'charge_id']);
             $table->foreignId('person_id')
                 ->constrained('people', 'id')
                 ->onDelete('cascade');

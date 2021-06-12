@@ -10,6 +10,6 @@ Route::get('/', function () {
 
     return Inertia::render('Welcome/Show');
 })->name('welcome');
-
+// middleware('throttle:3,10')->
 Route::post('/bills', [BillController::class, 'store'])->name('bills.store');
 Route::get('/bills/{bill}', [BillController::class, 'show'])->name('bills.show');

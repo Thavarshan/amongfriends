@@ -6,15 +6,15 @@ use App\Models\Bill;
 
 class ParseBillDetails
 {
+    /**
+     * Parse the given bill details to a presentable format.
+     *
+     * @param \App\Models\Bill $bill
+     *
+     * @return array
+     */
     public function parse(Bill $bill): array
     {
-        // Total amount
-        $total = $bill->charges->pluck('amount')->sum();
-
-        // Total days
-        $days = $bill->charges->count();
-
-        // Friends
         $people = [];
 
         foreach ($bill->charges as $charge) {
@@ -27,6 +27,9 @@ class ParseBillDetails
             }
         }
 
-        return compact('total', 'days', 'people');
+        return array_merge([
+            'total' => $bill->total,
+            'days' => $bill->days,
+        ], compact('people'));
     }
 }

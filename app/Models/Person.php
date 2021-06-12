@@ -55,23 +55,79 @@ class Person extends Model
         return $this->debts->pluck('amount')->sum();
     }
 
+    /**
+     * Get all charges the person is a part of.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function charges(): BelongsToMany
     {
         return $this->belongsToMany(Charge::class);
     }
 
+    /**
+     * Get all payments made by the person.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);
     }
 
+    /**
+     * Get all spendings of the person.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function spendings(): HasMany
     {
         return $this->hasMany(Spending::class);
     }
 
+    /**
+     * Get all debts the person has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function debts(): HasMany
     {
         return $this->hasMany(Debt::class);
+    }
+
+    /**
+     * Create a new payment for this person.
+     *
+     * @param array $details
+     *
+     * @return void
+     */
+    public function createPayment(array $details): void
+    {
+        $this->payments()->create($details);
+    }
+
+    /**
+     * Create a new spending for this person.
+     *
+     * @param array $details
+     *
+     * @return void
+     */
+    public function createSpending(array $details): void
+    {
+        $this->spendings()->create($details);
+    }
+
+    /**
+     * Create a new debt for this person.
+     *
+     * @param array $details
+     *
+     * @return void
+     */
+    public function createDebt(array $details): void
+    {
+        $this->debts()->create($details);
     }
 }

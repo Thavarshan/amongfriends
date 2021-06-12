@@ -17,11 +17,51 @@ class Bill extends Model
      */
     protected $guarded = [];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'total',
+        'days',
+    ];
+
+    /**
+     * Get all charges that belong to this bill.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function charges(): HasMany
     {
         return $this->hasMany(Charge::class);
     }
 
+    /**
+     * Get the bill total.
+     *
+     * @return int
+     */
+    public function getTotalAttribute(): int
+    {
+        return $this->charges->pluck('amount')->sum();
+    }
+
+    /**
+     * Get the number of days this bill is calculated for.
+     *
+     * @return int
+     */
+    public function getDaysAttribute(): int
+    {
+        return $this->charges->count();
+    }
+
+    /**
+     * Clear all details related to this bill and remove it from the database.
+     *
+     * @return void
+     */
     public function clear(): void
     {
         $this->charges->each(fn ($charge) => $charge->clear());

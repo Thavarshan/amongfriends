@@ -9,7 +9,7 @@
         "day": 2,
         "amount": 100,
         "paid_by": "Kasun",
-        "friends": ["Kasun", "Tanu", "Liam"]
+        "friends": ["Kasun", ["Tanu", "Ken"], "Liam"]
     },
     {
         "day": 3,

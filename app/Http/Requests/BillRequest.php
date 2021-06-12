@@ -25,4 +25,14 @@ class BillRequest extends Request
     {
         return $this->getRulesFor('bill');
     }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->setErrorBag('calculateBill');
+    }
 }
