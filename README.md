@@ -1,3 +1,5 @@
+<p align="center"><a href="http://amongfriendsapp.herokuapp.com/" target="_blank"><img src="https://github.com/Thavarshan/amongfriends/blob/main/public/img/baner.svg" width="400"></a></p>
+
 # Among Friends
 
 ## Introduction
