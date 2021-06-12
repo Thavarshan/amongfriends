@@ -14,6 +14,20 @@ class CalculateBill
     use Fillable;
 
     /**
+     * The amount each person owes.
+     *
+     * @var int
+     */
+    protected $amountPerPerson;
+
+    /**
+     * The amount person with friends owes.
+     *
+     * @var int
+     */
+    protected $amountForFrinds;
+
+    /**
      * Parse the given billing data and calculate payment amounts.
      *
      * @param array $data
@@ -46,7 +60,7 @@ class CalculateBill
                         : $this->registerDebt($person, $charge, $hasFriend);
 
                     $person->createSpending([
-                        'amount' => (int) $this->amountPerPerson,
+                        'amount' => $this->amountPerPerson(),
                         'charge_id' => $charge->id,
                     ]);
 
@@ -98,12 +112,15 @@ class CalculateBill
      *
      * @return void
      */
-    protected function registerDebt(Person $person, Charge $charge, bool $hasFriends = false): void
-    {
+    protected function registerDebt(
+        Person $person,
+        Charge $charge,
+        bool $hasFriends = false
+    ): void {
         $person->createDebt([
             'amount' => $hasFriends
-                ? (int) $this->amountForFrinds
-                : (int) $this->amountPerPerson,
+                ? $this->amountForFrinds()
+                : $this->amountPerPerson(),
             'charge_id' => $charge->id,
             'owed_to' => $charge->paid_by,
         ]);
@@ -116,7 +133,7 @@ class CalculateBill
      *
      * @return void
      */
-    protected function calculateCharges(Charge $charge): void
+    public function calculateCharges(Charge $charge): void
     {
         // Example Total: 200 with 3 friends and 2 friends of friend
         // ['Kasun', 'Liam', ['Tanu', 'Ken', 'Moe']]
@@ -132,5 +149,25 @@ class CalculateBill
 
         // 120 = 40 * 3
         $this->amountForFrinds = $this->amountPerPerson * $friendsOfFriend;
+    }
+
+    /**
+     * The amount each person owes.
+     *
+     * @var int
+     */
+    public function amountPerPerson(): int
+    {
+        return (int) $this->amountPerPerson;
+    }
+
+    /**
+     * The amount person with friends owes.
+     *
+     * @var int
+     */
+    public function amountForFrinds(): int
+    {
+        return (int) $this->amountForFrinds;
     }
 }
