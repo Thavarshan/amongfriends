@@ -136,4 +136,4 @@ Please review [our security policy](https://github.com/thavarhan/amongfriends/se
 
 ## License
 
-Among Friends is not open-sourced software licensed and is privately owned.
+AmongFriends is not open-sourced and the software is privately owned.
