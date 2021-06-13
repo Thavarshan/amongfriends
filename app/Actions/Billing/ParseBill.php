@@ -3,8 +3,9 @@
 namespace App\Actions\Billing;
 
 use App\Models\Bill;
+use App\Contracts\Actions\ParsesBillInformation;
 
-class ParseBillDetails
+class ParseBill implements ParsesBillInformation
 {
     /**
      * Parse the given bill details to a presentable format.

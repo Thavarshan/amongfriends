@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Actions\Billing\ClearBills as ClearBillsAction;
+use App\Contracts\Actions\ClearsBillInformation;
 
 class ClearBills implements ShouldQueue
 {
@@ -20,17 +20,16 @@ class ClearBills implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param \App\Actions\ClearBillsAction
+     * @param \App\Contracts\Actions\ClearsBillInformation
      *
      * @return void
      */
-    public function handle(ClearBillsAction $clearer): void
+    public function handle(ClearsBillInformation $clearer): void
     {
         try {
             $clearer->clear();
         } catch (Throwable $e) {
-            throw $e;
-            // $this->fail($e);
+            $this->fail($e);
         }
     }
 }
