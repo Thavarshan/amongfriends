@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <span class="text-xs font-semibold text-gray-500">Only use valid JSON format</span>
+                            <span class="text-xs font-semibold text-gray-500">Only use valid JSON format. Please do not use both input methods at the same time, if one has invalid data both will not work.</span>
                         </div>
 
                         <section-border span="5"></section-border>

@@ -9,8 +9,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Emberfuse\Scorch\Support\Traits\Fillable;
+use App\Contracts\Actions\CalculatesBillInfromation;
 
-class CalculateBill
+class CalculateBill implements CalculatesBillInfromation
 {
     use Fillable;
 

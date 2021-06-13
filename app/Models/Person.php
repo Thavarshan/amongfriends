@@ -26,7 +26,7 @@ class Person extends Model
     protected $with = [
         'payments',
         'spendings',
-        'debts'
+        'debts',
     ];
 
     /**
@@ -104,11 +104,11 @@ class Person extends Model
      *
      * @param array $details
      *
-     * @return void
+     * @return \App\Models\Payment
      */
-    public function createPayment(array $details): void
+    public function createPayment(array $details): Payment
     {
-        $this->payments()->create($details);
+        return $this->payments()->create($details);
     }
 
     /**
@@ -116,11 +116,11 @@ class Person extends Model
      *
      * @param array $details
      *
-     * @return void
+     * @return \App\Models\Spending
      */
-    public function createSpending(array $details): void
+    public function createSpending(array $details): Spending
     {
-        $this->spendings()->create($details);
+        return $this->spendings()->create($details);
     }
 
     /**
@@ -128,10 +128,10 @@ class Person extends Model
      *
      * @param array $details
      *
-     * @return void
+     * @return \App\Models\Debt
      */
-    public function createDebt(array $details): void
+    public function createDebt(array $details): Debt
     {
-        $this->debts()->create($details);
+        return $this->debts()->create($details);
     }
 }

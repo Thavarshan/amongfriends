@@ -1,5 +1,18 @@
 # Release Notes
 
+## [v1.0.2 (2020-06-13)](https://github.com/emberfuse/scorch/compare/v1.0.1...v1.0.2)
+
+### Changed
+
+- Bill actions adhere to specialized contracts
+- Updated documentation
+- Code cleanup
+- Rate limiter works only in production
+
+### Fixed
+
+- `ParsesBillInformation` is not instantiable
+
 ## [v1.0.1 (2020-06-13)](https://github.com/emberfuse/scorch/compare/v1.0.0...v1.0.1)
 
 ### Added

@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use App\Actions\Billing\ParseBill;
 use App\Actions\Billing\CalculateBill;
-use App\Actions\Billing\ParseBillDetails;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ParseBillDetailsTest extends TestCase
@@ -31,7 +31,7 @@ class ParseBillDetailsTest extends TestCase
 
     public function testParseBillDetails()
     {
-        $parser = new ParseBillDetails();
+        $parser = new ParseBill();
         $details = $parser->parse($this->bill);
 
         $this->assertEquals(250, $details['total']);
