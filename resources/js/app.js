@@ -1,11 +1,11 @@
 import config from './Config';
 import axios from 'axios';
+
 import { createApp, h } from 'vue';
 import {
     App as InertiaApp,
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
-
 import { diffForHumans, simple, expanded } from './Plugins/moment';
 import { InertiaProgress } from '@inertiajs/progress';
 
@@ -31,8 +31,8 @@ createApp({
             config,
             diffForHumans,
             simple,
-            expanded
-        }
+            expanded,
+        },
     })
     .use(InertiaPlugin)
     .mount(app);

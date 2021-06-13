@@ -7,6 +7,7 @@ use App\Actions\Billing\ParseBill;
 use App\Actions\Billing\CalculateBill;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Actions\ClearsBillInformation;
+use App\Contracts\Actions\ParsesBillInformation;
 use Emberfuse\Scorch\Providers\Traits\HasActions;
 use App\Contracts\Actions\CalculatesBillInfromation;
 
