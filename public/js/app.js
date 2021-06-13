@@ -24743,7 +24743,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
   "class": "mt-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-xs font-semibold text-gray-500"
-}, "Only use valid JSON format")], -1
+}, "Only use valid JSON format. Please do not use both input methods at the same time, if one has invalid data both will not work.")], -1
 /* HOISTED */
 );
 
