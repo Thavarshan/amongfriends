@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Contracts\Support\Cancellable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Bill extends Model
+class Bill extends Model implements Cancellable
 {
     use HasFactory;
 
@@ -58,11 +59,11 @@ class Bill extends Model
     }
 
     /**
-     * Clear all details related to this bill and remove it from the database.
+     * Cancel a course of action or a resource.
      *
      * @return void
      */
-    public function clear(): void
+    public function cancel(): void
     {
         $this->charges->each(fn ($charge) => $charge->cancel());
 

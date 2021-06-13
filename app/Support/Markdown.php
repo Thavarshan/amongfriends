@@ -77,7 +77,7 @@ class Markdown
      */
     protected function createDefaultExtension(): ExtensionInterface
     {
-        return new GithubFlavoredMarkdownExtension();
+        return $this->resolve(GithubFlavoredMarkdownExtension::class);
     }
 
     /**
