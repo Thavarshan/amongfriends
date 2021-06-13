@@ -12,7 +12,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome/Show');
 })->name('welcome');
 
-Route::post('/bills', [BillController::class, 'store'])->name('bills.store');
+Route::middleware('throttle:3,10')->post('/bills', [BillController::class, 'store'])->name('bills.store');
 Route::get('/bills/{bill}', [BillController::class, 'show'])->name('bills.show');
 
 Route::get('/guide', function () {

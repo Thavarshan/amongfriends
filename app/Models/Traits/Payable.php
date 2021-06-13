@@ -23,6 +23,6 @@ trait Payable
      */
     public function rawAmount(): int
     {
-        return $this->price;
+        return (int) $this->amount;
     }
 }
