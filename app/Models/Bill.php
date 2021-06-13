@@ -64,7 +64,7 @@ class Bill extends Model
      */
     public function clear(): void
     {
-        $this->charges->each(fn ($charge) => $charge->clear());
+        $this->charges->each(fn ($charge) => $charge->cancel());
 
         $this->delete();
     }

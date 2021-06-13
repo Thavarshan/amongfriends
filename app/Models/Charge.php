@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Payable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Contracts\Billing\Payment as PaymentContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Charge extends Model
+class Charge extends Model implements PaymentContract
 {
     use HasFactory;
+    use Payable;
 
     /**
      * The attributes that are mass assignable.
@@ -117,5 +120,17 @@ class Charge extends Model
     public function savePerson(Person $person): void
     {
         $this->people()->save($person);
+    }
+
+    /**
+     * Cancel a course of action or a resource.
+     *
+     * @return void
+     */
+    public function cancel(): void
+    {
+        $this->people->each->delete();
+
+        $this->delete();
     }
 }

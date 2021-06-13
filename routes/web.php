@@ -2,7 +2,7 @@
 
 use Inertia\Inertia;
 use App\Jobs\ClearBills;
-use App\Support\Markdown;
+use Facades\App\Support\Markdown;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillController;
 

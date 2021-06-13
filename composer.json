@@ -19,6 +19,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "league/commonmark": "^1.6",
+        "moneyphp/money": "^3.3",
         "tightenco/ziggy": "^1.2"
     },
     "require-dev": {
