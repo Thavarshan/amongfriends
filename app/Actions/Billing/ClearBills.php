@@ -3,9 +3,8 @@
 namespace App\Actions\Billing;
 
 use App\Models\Bill;
-use App\Models\Charge;
-use App\Models\Person;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
 
 class ClearBills
 {
@@ -17,9 +16,9 @@ class ClearBills
     public function clear(): void
     {
         DB::transaction(function (): void {
-            Person::all()->each(fn (Person $person) => $person->delete());
-            Charge::all()->each(fn (Charge $charge) => $charge->delete());
-            Bill::all()->each(fn (Bill $bill) => $bill->delete());
+            tap(Bill::all(), function (Collection $bills): void {
+                $bills->each(fn (Bill $bill) => $bill->cancel());
+            });
         });
     }
 }

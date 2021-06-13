@@ -23,7 +23,11 @@ class Person extends Model
      *
      * @var array
      */
-    protected $with = ['payments', 'spendings', 'debts'];
+    protected $with = [
+        'payments',
+        'spendings',
+        'debts'
+    ];
 
     /**
      * The accessors to append to the model's array form.

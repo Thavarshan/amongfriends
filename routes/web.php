@@ -2,7 +2,7 @@
 
 use Inertia\Inertia;
 use App\Jobs\ClearBills;
-use App\Support\Markdown;
+use Facades\App\Support\Markdown;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillController;
 
@@ -12,7 +12,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome/Show');
 })->name('welcome');
 
-Route::post('/bills', [BillController::class, 'store'])->name('bills.store');
+Route::middleware('throttle:3,10')->post('/bills', [BillController::class, 'store'])->name('bills.store');
 Route::get('/bills/{bill}', [BillController::class, 'show'])->name('bills.show');
 
 Route::get('/guide', function () {
