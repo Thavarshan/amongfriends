@@ -57,8 +57,8 @@ You can now access the server at http://localhost:8000
 **TL;DR command list**
 
 ```bash
-git clone git@github.com:gothinkster/laravel-realworld-example-app.git
-cd laravel-realworld-example-app
+git clone https://github.com/Thavarshan/amongfriends.git
+cd amongfriends
 composer install
 cp .env.example .env
 php artisan key:generate
